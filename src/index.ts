@@ -1,4 +1,5 @@
 import { conversation } from '@assistant/conversation';
+import type { VercelApiHandler } from '@vercel/node';
 import { Events } from './constants';
 import { handlePullList } from './handlers/pull-list';
 import { handleUsername } from './handlers/username';
@@ -15,4 +16,6 @@ const assistant = conversation();
 assistant.handle(Events.SetUsername, handleUsername);
 assistant.handle(Events.ViewPullList, handlePullList);
 
-export default assistant;
+const handler: VercelApiHandler = (req, res) => assistant(req, res);
+
+export default handler;
