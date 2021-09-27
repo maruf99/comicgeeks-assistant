@@ -68262,6 +68262,8 @@ const assistant = (0, conversation_1.conversation)();
 assistant.handle(constants_1.Events.SetUsername, username_1.handleUsername);
 assistant.handle(constants_1.Events.ViewPullList, pull_list_1.handlePullList);
 const handler = (req, res) => {
+    console.log(req.headers);
+    console.log(req.body);
     assistant(req, res);
 };
 exports.default = handler;
