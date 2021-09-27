@@ -13,8 +13,8 @@ declare module '@assistant/conversation' {
 
 const assistant = conversation();
 
-assistant.handle('setUsername', handleUsername);
-assistant.handle('viewPullList', handlePullList);
+assistant.handle(Events.SetUsername, handleUsername);
+assistant.handle(Events.ViewPullList, handlePullList);
 
 const handler: VercelApiHandler = (req, res) => {
 	assistant(req, res);

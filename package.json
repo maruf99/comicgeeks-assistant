@@ -7,7 +7,7 @@
 	"scripts": {
 		"prebuild": "rimraf dist",
 		"build": "tsc",
-		"build:vercel": "ncc build src/index.ts -o api -m --target es2019",
+		"build:vercel": "ncc build src/index.ts -o api --target es2019",
 		"lint": "eslint src --fix",
 		"format": "prettier src --write"
 	},
