@@ -7,13 +7,13 @@ export const handleUsername = async (conv: ConversationV3) => {
 	const user = await fetchUser(username);
 
 	if (!user) {
-		return conv.add('That user does not exist.');
+		conv.add('That user does not exist.');
+	} else {
+		conv.user.params.comicUsername = user.name;
+		conv.user.params.comicUserID = user.id;
+
+		conv.add(`Your username has been set to ${user.name}`);
 	}
-
-	conv.user.params.comicUsername = user.name;
-	conv.user.params.comicUserID = user.id;
-
-	conv.add(`Your username has been set to ${user.name}`);
 
 	conv.scene.next = { name: 'actions.scene.END_CONVERSATION' };
 };

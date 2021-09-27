@@ -5,14 +5,14 @@ export const handlePullList = async (conv: ConversationV3) => {
 	const userID = conv.user.params.comicUserID;
 
 	if (typeof userID !== 'number') {
-		return conv.add('You do not have your Comic Geeks username set.');
+		conv.add('You do not have your Comic Geeks username set.');
+	} else {
+		const pullList = await fetchPulls(userID, new Date(), { sort: SortTypes.AlphaAsc });
+
+		const result = pullList.map((issue) => issue.name).join('\n');
+
+		conv.add(result);
 	}
-
-	const pullList = await fetchPulls(userID, new Date(), { sort: SortTypes.AlphaAsc });
-
-	const result = pullList.map((issue) => issue.name).join('\n');
-
-	conv.add(result);
 
 	conv.scene.next = { name: 'actions.scene.END_CONVERSATION' };
 };
