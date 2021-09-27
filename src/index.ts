@@ -17,6 +17,9 @@ assistant.handle(Events.SetUsername, handleUsername);
 assistant.handle(Events.ViewPullList, handlePullList);
 
 const handler: VercelApiHandler = (req, res) => {
+	console.log(req.headers);
+	console.log(req.body);
+
 	assistant(req, res);
 };
 
