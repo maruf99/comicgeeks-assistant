@@ -11,6 +11,12 @@ declare module '@assistant/conversation' {
 	}
 }
 
+declare module 'http' {
+	interface IncomingMessage {
+		get(header: string): string | string[];
+	}
+}
+
 const assistant = conversation();
 
 assistant.handle(Events.SetUsername, handleUsername);
@@ -19,6 +25,8 @@ assistant.handle(Events.ViewPullList, handlePullList);
 const handler: VercelApiHandler = (req, res) => {
 	console.log(req.headers);
 	console.log(req.body);
+
+	req.get = (header) => req.headers[header.toLowerCase()];
 
 	assistant(req, res);
 };
