@@ -68264,6 +68264,7 @@ assistant.handle(constants_1.Events.ViewPullList, pull_list_1.handlePullList);
 const handler = (req, res) => {
     console.log(req.headers);
     console.log(req.body);
+    req.get = (header) => req.headers[header.toLowerCase()];
     assistant(req, res);
 };
 exports.default = handler;
