@@ -67971,7 +67971,7 @@ const handlePullList = async (conv) => {
     const pullList = await (0, comicgeeks_1.fetchPulls)(userID, new Date(), { sort: comicgeeks_1.SortTypes.AlphaAsc });
     const result = pullList.map((issue) => issue.name).join('\n');
     conv.add(result);
-    conv.scene.next.name = 'End conversation';
+    conv.scene.next = { name: 'actions.scene.END_CONVERSATION' };
 };
 exports.handlePullList = handlePullList;
 
@@ -67996,7 +67996,7 @@ const handleUsername = async (conv) => {
     conv.user.params.comicUsername = user.name;
     conv.user.params.comicUserID = user.id;
     conv.add(`Your username has been set to ${user.name}`);
-    conv.scene.next.name = 'End conversation';
+    conv.scene.next = { name: 'actions.scene.END_CONVERSATION' };
 };
 exports.handleUsername = handleUsername;
 
