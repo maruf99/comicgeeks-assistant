@@ -16,6 +16,8 @@ const assistant = conversation();
 assistant.handle(Events.SetUsername, handleUsername);
 assistant.handle(Events.ViewPullList, handlePullList);
 
-const handler: VercelApiHandler = (req, res) => assistant(req, res);
+const handler: VercelApiHandler = (req, res) => {
+	assistant(req, res);
+};
 
 export default handler;
