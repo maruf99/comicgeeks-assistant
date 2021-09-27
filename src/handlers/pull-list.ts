@@ -10,7 +10,9 @@ export const handlePullList = async (conv: ConversationV3) => {
 
 	const pullList = await fetchPulls(userID, new Date(), { sort: SortTypes.AlphaAsc });
 
-	const result = pullList.map((issue) => issue.name.replace('#', 'Issue ')).join('\n');
+	const result = pullList.map((issue) => issue.name).join('\n');
 
 	conv.add(result);
+
+	conv.scene.next.name = 'End conversation';
 };

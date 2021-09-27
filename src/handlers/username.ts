@@ -14,4 +14,6 @@ export const handleUsername = async (conv: ConversationV3) => {
 	conv.user.params.comicUserID = user.id;
 
 	conv.add(`Your username has been set to ${user.name}`);
+
+	conv.scene.next.name = 'End conversation';
 };

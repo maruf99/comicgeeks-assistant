@@ -26,6 +26,7 @@ const handler: VercelApiHandler = (req, res) => {
 	console.log(req.headers);
 	console.log(req.body);
 
+	// conversation() handler checks for req.get for express-like APIs
 	req.get = (header) => req.headers[header.toLowerCase()];
 
 	assistant(req, res);
