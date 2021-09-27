@@ -67969,8 +67969,9 @@ const handlePullList = async (conv) => {
         return conv.add('You do not have your Comic Geeks username set.');
     }
     const pullList = await (0, comicgeeks_1.fetchPulls)(userID, new Date(), { sort: comicgeeks_1.SortTypes.AlphaAsc });
-    const result = pullList.map((issue) => issue.name.replace('#', 'Issue ')).join('\n');
+    const result = pullList.map((issue) => issue.name).join('\n');
     conv.add(result);
+    conv.scene.next.name = 'End conversation';
 };
 exports.handlePullList = handlePullList;
 
@@ -67995,6 +67996,7 @@ const handleUsername = async (conv) => {
     conv.user.params.comicUsername = user.name;
     conv.user.params.comicUserID = user.id;
     conv.add(`Your username has been set to ${user.name}`);
+    conv.scene.next.name = 'End conversation';
 };
 exports.handleUsername = handleUsername;
 
@@ -68264,6 +68266,7 @@ assistant.handle(constants_1.Events.ViewPullList, pull_list_1.handlePullList);
 const handler = (req, res) => {
     console.log(req.headers);
     console.log(req.body);
+    // conversation() handler checks for req.get for express-like APIs
     req.get = (header) => req.headers[header.toLowerCase()];
     assistant(req, res);
 };
