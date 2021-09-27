@@ -14,5 +14,5 @@ export const handlePullList = async (conv: ConversationV3) => {
 
 	conv.add(result);
 
-	conv.scene.next.name = 'End conversation';
+	conv.scene.next = { name: 'actions.scene.END_CONVERSATION' };
 };

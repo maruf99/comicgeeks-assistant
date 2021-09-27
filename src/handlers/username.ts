@@ -15,5 +15,5 @@ export const handleUsername = async (conv: ConversationV3) => {
 
 	conv.add(`Your username has been set to ${user.name}`);
 
-	conv.scene.next.name = 'End conversation';
+	conv.scene.next = { name: 'actions.scene.END_CONVERSATION' };
 };
