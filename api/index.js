@@ -67966,11 +67966,13 @@ const comicgeeks_1 = __nccwpck_require__(1586);
 const handlePullList = async (conv) => {
     const userID = conv.user.params.comicUserID;
     if (typeof userID !== 'number') {
-        return conv.add('You do not have your Comic Geeks username set.');
+        conv.add('You do not have your Comic Geeks username set.');
     }
-    const pullList = await (0, comicgeeks_1.fetchPulls)(userID, new Date(), { sort: comicgeeks_1.SortTypes.AlphaAsc });
-    const result = pullList.map((issue) => issue.name).join('\n');
-    conv.add(result);
+    else {
+        const pullList = await (0, comicgeeks_1.fetchPulls)(userID, new Date(), { sort: comicgeeks_1.SortTypes.AlphaAsc });
+        const result = pullList.map((issue) => issue.name).join('\n');
+        conv.add(result);
+    }
     conv.scene.next = { name: 'actions.scene.END_CONVERSATION' };
 };
 exports.handlePullList = handlePullList;
@@ -67991,11 +67993,13 @@ const handleUsername = async (conv) => {
     const username = (_a = conv.intent.query) === null || _a === void 0 ? void 0 : _a.replace(/\s/g, '');
     const user = await (0, comicgeeks_1.fetchUser)(username);
     if (!user) {
-        return conv.add('That user does not exist.');
+        conv.add('That user does not exist.');
     }
-    conv.user.params.comicUsername = user.name;
-    conv.user.params.comicUserID = user.id;
-    conv.add(`Your username has been set to ${user.name}`);
+    else {
+        conv.user.params.comicUsername = user.name;
+        conv.user.params.comicUserID = user.id;
+        conv.add(`Your username has been set to ${user.name}`);
+    }
     conv.scene.next = { name: 'actions.scene.END_CONVERSATION' };
 };
 exports.handleUsername = handleUsername;
