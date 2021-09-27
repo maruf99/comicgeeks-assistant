@@ -1,5 +1,5 @@
 {
-	"name": "comic-assistant",
+	"name": "comicgeeks-assistant",
 	"version": "1.0.0",
 	"description": "Google Assistant Action to view your League of Comic Geeks pull list.",
 	"main": "dist/index.js",
