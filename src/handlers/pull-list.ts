@@ -5,7 +5,9 @@ export const handlePullList = async (conv: ConversationV3) => {
 	const userID = conv.user.params.comicUserID;
 
 	if (typeof userID !== 'number') {
-		conv.add('You do not have your Comic Geeks username set.');
+		conv.add(
+			'You do not have your League of Comic Geeks username set. Use the "Set my username" command to add your League of Comic Geeks account.'
+		);
 	} else {
 		const pullList = await fetchPulls(userID, new Date(), { sort: SortTypes.AlphaAsc });
 

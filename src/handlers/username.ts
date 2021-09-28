@@ -7,7 +7,7 @@ export const handleUsername = async (conv: ConversationV3) => {
 	const user = await fetchUser(username);
 
 	if (!user) {
-		conv.add('That user does not exist.');
+		conv.add('There is no account on League of Comic Geeks with that username.');
 	} else {
 		conv.user.params.comicUsername = user.name;
 		conv.user.params.comicUserID = user.id;
