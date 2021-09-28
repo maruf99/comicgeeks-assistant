@@ -67966,7 +67966,7 @@ const comicgeeks_1 = __nccwpck_require__(1586);
 const handlePullList = async (conv) => {
     const userID = conv.user.params.comicUserID;
     if (typeof userID !== 'number') {
-        conv.add('You do not have your Comic Geeks username set.');
+        conv.add('You do not have your League of Comic Geeks username set. Use the "Set my username" command to add your League of Comic Geeks account.');
     }
     else {
         const pullList = await (0, comicgeeks_1.fetchPulls)(userID, new Date(), { sort: comicgeeks_1.SortTypes.AlphaAsc });
@@ -67993,7 +67993,7 @@ const handleUsername = async (conv) => {
     const username = (_a = conv.intent.query) === null || _a === void 0 ? void 0 : _a.replace(/\s/g, '');
     const user = await (0, comicgeeks_1.fetchUser)(username);
     if (!user) {
-        conv.add('That user does not exist.');
+        conv.add('There is no account on League of Comic Geeks with that username.');
     }
     else {
         conv.user.params.comicUsername = user.name;
