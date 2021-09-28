@@ -67991,9 +67991,9 @@ const comicgeeks_1 = __nccwpck_require__(1586);
 const handleUsername = async (conv) => {
     var _a;
     const username = (_a = conv.intent.query) === null || _a === void 0 ? void 0 : _a.replace(/\s/g, '');
-    const user = await (0, comicgeeks_1.fetchUser)(username);
+    const user = await (0, comicgeeks_1.fetchUser)(username).catch(() => null);
     if (!user) {
-        conv.add('There is no account on League of Comic Geeks with that username.');
+        conv.add('There is no account on League of Comic Geeks with that username. Please double check your spelling or create an account at leagueofcomicgeeks.com');
     }
     else {
         conv.user.params.comicUsername = user.name;
