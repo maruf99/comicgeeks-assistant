@@ -4,10 +4,12 @@ import { fetchUser } from 'comicgeeks';
 export const handleUsername = async (conv: ConversationV3) => {
 	const username = conv.intent.query?.replace(/\s/g, '');
 
-	const user = await fetchUser(username);
+	const user = await fetchUser(username).catch(() => null);
 
 	if (!user) {
-		conv.add('There is no account on League of Comic Geeks with that username.');
+		conv.add(
+			'There is no account on League of Comic Geeks with that username. Please double check your spelling or create an account at leagueofcomicgeeks.com'
+		);
 	} else {
 		conv.user.params.comicUsername = user.name;
 		conv.user.params.comicUserID = user.id;
