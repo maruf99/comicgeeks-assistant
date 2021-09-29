@@ -67970,7 +67970,7 @@ const handlePullList = async (conv) => {
     }
     else {
         const pullList = await (0, comicgeeks_1.fetchPulls)(userID, new Date(), { sort: comicgeeks_1.SortTypes.AlphaAsc });
-        const result = pullList.map((issue) => issue.name).join('\n');
+        const result = pullList.length ? pullList.map((issue) => issue.name).join('\n') : 'You have no comics pulled this week.';
         conv.add(result);
     }
     conv.scene.next = { name: 'actions.scene.END_CONVERSATION' };
