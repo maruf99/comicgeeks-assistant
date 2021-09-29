@@ -11,7 +11,7 @@ export const handlePullList = async (conv: ConversationV3) => {
 	} else {
 		const pullList = await fetchPulls(userID, new Date(), { sort: SortTypes.AlphaAsc });
 
-		const result = pullList.map((issue) => issue.name).join('\n');
+		const result = pullList.length ? pullList.map((issue) => issue.name).join('\n') : 'You have no comics pulled this week.';
 
 		conv.add(result);
 	}
